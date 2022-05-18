@@ -185,8 +185,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User accedi(String loginInput, String passwordInput) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		User result = null;
+		try (Connection connection = MyConnection.getConnection(Constants.DRIVER_NAME, Constants.CONNECTION_URL)) {
+
+			userDao.setConnection(connection);
+			result = userDao.accedi(loginInput, passwordInput);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return result;
 	}
 
 }

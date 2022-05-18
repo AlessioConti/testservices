@@ -37,8 +37,10 @@ public class TestUser {
 			testRicercaInizialeUsername(userService);
 			
 			testRicercaPerDataPrimaDi(userService);
-			*/
+			
 			testRicercaPerCognomeEInizialeNome(userService);
+			*/
+			testAccedi(userService);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -142,6 +144,15 @@ public class TestUser {
 		for(User userInput : risultatoRicercaPerNomeECognome)
 			System.out.println(userInput);
 		System.out.println("testRicercaPerCognomeEInizialeNome concluso......");
+	}
+	
+	public static void testAccedi(UserService userService) throws Exception{
+		System.out.println("testAccedi inizializzato............");
+		String loginPerRicerca = "gio";
+		String passwordPerRicerca = "pwd@3";
+		User risultatoAccedi = userService.accedi(loginPerRicerca, passwordPerRicerca);
+		System.out.println("Benvenuto/a " + risultatoAccedi.getNome()+ "! Divertiti!");
+		System.out.println("testAccedi concluso........");
 	}
 
 }
